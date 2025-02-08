@@ -1,0 +1,245 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #f0f0f0; /* Change to light gray */
+    transition: background 0.3s, color 0.3s;
+}
+
+header {
+    background: #f0f0f0; /* Change to light gray */
+    color: #333; /* Change text color to dark */
+    padding: 20px;
+    margin-top: 50px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 36px; /* Increase font size */
+    color: inherit; /* Ensure color inherits from header */
+}
+
+.dark-mode h1 {
+    color: #fff; /* Ensure name is visible in dark mode */
+}
+
+p.tagline {
+    color: inherit; /* Ensure color inherits from header */
+    transition: color 0.3s; /* Add transition for smooth color change */
+}
+
+.dark-mode p.tagline {
+    color: #fff; /* Ensure tagline is visible in dark mode */
+}
+
+/* Profile Section */
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-photo {
+    width: 150px; /* Increased from 100px */
+    height: 150px; /* Increased from 100px */
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.social-links {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Add gap between buttons */
+}
+
+.social-button {
+    margin: 5px;
+    padding: 10px 15px;
+    background-color: #007bff; /* Blue color */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.social-button:hover {
+    background-color: #0056b3;
+}
+
+.dark-mode .social-button {
+    background-color: #007bff; /* Maintain blue color in dark mode */
+}
+
+.dark-mode .social-button:hover {
+    background-color: #0056b3;
+}
+
+/* Navigation Bar */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 15px 0;
+    z-index: 10;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    color: #f4f4f4;
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333; /* Change to dark color for visibility */
+    z-index: 1000; /* Ensure it is above other elements */
+}
+
+#theme-toggle:hover {
+    color: #555;
+}
+
+/* Main Content Sections */
+section {
+    padding: 50px;
+    margin: 20px 0;
+    background-color: #fff;
+    border-radius: 5px;
+    margin-top: 100px;
+}
+
+/* Section Titles */
+section h2 {
+    margin-bottom: 20px;
+}
+
+/* Experience Section */
+.experience-item, .project-item {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.experience-item h3, .project-item h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.experience-item p, .project-item p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+/* Contact Section */
+.email-button {
+    background-color: #28a745;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.email-button:hover {
+    background-color: #218838;
+}
+
+/* View Project Button */
+.view-project-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 10px;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+}
+
+.view-project-button:hover {
+    background-color: #0056b3;
+}
+
+/* Resume Button */
+.resume-button {
+    background-color: #007bff; /* Blue color */
+    color: white;
+    padding: 15px 40px; /* Increase padding for wider button */
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-top: 10px;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.resume-button:hover {
+    background-color: #0056b3;
+}
+
+.dark-mode .resume-button {
+    background-color: #007bff; /* Maintain blue color in dark mode */
+}
+
+.dark-mode .resume-button:hover {
+    background-color: #0056b3;
+}
+
+.dark-mode {
+    background-color: #2c2c2c;
+    color: white;
+}
+
+.dark-mode header {
+    background-color: #444;
+}
+
+.dark-mode section {
+    background-color: #333;
+    color: white;
+}
+
+.dark-mode .social-button {
+    background-color: #007bff; /* Maintain blue color in dark mode */
+}
+
+.dark-mode .social-button:hover {
+    background-color: #0056b3;
+}
