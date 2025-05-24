@@ -1,3 +1,11 @@
+// Use modern JavaScript features and optimize performance
+const getElement = (id) => document.getElementById(id);
+const createElement = (type, className) => {
+    const element = document.createElement(type);
+    if (className) element.classList.add(className);
+    return element;
+};
+
 // Data for Experience and Projects
 const experienceData = [
     { title: "Web Developer", company: "Coding Samurai", year: "March-April, 2024", description: "Developing To-do List applications with Html, Css, and JavaScript." },
@@ -11,94 +19,147 @@ const projectData = [
     { name: "Weather App", description: "A weather application to check the current weather conditions, it is built using HTML, CSS and JavaScript, and the OpenWeatherMap API! ⛅  .", link: "https://github.com/laxmithapas/weather" },
 ];
 
-// Function to Render Experience Section Dynamically
+// Additional data
+const skillsData = [
+    { name: "HTML/CSS", level: 90 },
+    { name: "JavaScript", level: 85 },
+    { name: "React", level: 75 },
+    { name: "Python", level: 80 },
+    { name: "UI/UX Design", level: 70 },
+    { name: "Cybersecurity", level: 65 }
+];
+
+const testimonialData = [
+    { name: "Alex Chen", role: "Project Manager", text: "Laxmi's attention to detail and problem-solving skills are exceptional." },
+    { name: "Sarah Johnson", role: "Senior Developer", text: "A great team player with strong technical capabilities." },
+    { name: "Mike Ross", role: "Client", text: "Delivered exactly what we needed, on time and with great quality." }
+];
+
+// Optimized render functions
 const renderExperience = () => {
-    const experienceContainer = document.getElementById('experience-list');
-    if (!experienceContainer) {
-        console.error('Experience container not found');
-        return;
-    }
+    const container = getElement('experience-list');
+    if (!container) return;
+
+    const fragment = document.createDocumentFragment();
     experienceData.forEach(item => {
-        const experienceElement = document.createElement('div');
-        experienceElement.classList.add('experience-item');
-        experienceElement.innerHTML = `
-            <h3>${item.title} at ${item.company} (${item.year})</h3>
+        const el = createElement('div', 'experience-item');
+        el.innerHTML = `
+            <h3>${item.title}</h3>
+            <span class="company-year">🏢 ${item.company} • 📅 ${item.year}</span>
             <p>${item.description}</p>
         `;
-        experienceContainer.appendChild(experienceElement);
+        fragment.appendChild(el);
     });
+    container.appendChild(fragment);
 };
 
-// Function to Render Projects Section Dynamically
 const renderProjects = () => {
-    const projectContainer = document.getElementById('project-container');
-    if (!projectContainer) {
-        console.error('Project container not found');
-        return;
-    }
+    const container = getElement('projects').querySelector('.project-grid');
+    if (!container) return;
+
+    const fragment = document.createDocumentFragment();
     projectData.forEach(item => {
-        const projectElement = document.createElement('div');
-        projectElement.classList.add('project-item');
-        projectElement.innerHTML = `
+        const el = createElement('div', 'project-item');
+        el.innerHTML = `
             <h3>${item.name}</h3>
             <p>${item.description}</p>
             <button class="view-project-button" data-link="${item.link}">🔗 View Project</button>
         `;
-        projectContainer.appendChild(projectElement);
+        fragment.appendChild(el);
+    });
+    container.appendChild(fragment);
+
+    // Add event listeners for project links
+    container.addEventListener('click', (e) => {
+        if (e.target.classList.contains('view-project-button')) {
+            window.open(e.target.dataset.link, '_blank');
+        }
+    });
+};
+
+// Render Skills with animation
+const renderSkills = () => {
+    const container = getElement('skills').querySelector('.skills-container');
+    if (!container) return;
+
+    skillsData.forEach(skill => {
+        const skillEl = createElement('div', 'skill-item');
+        skillEl.innerHTML = `
+            <h3>${skill.name}</h3>
+            <div class="skill-progress">
+                <div class="progress-bar" data-level="${skill.level}" style="width: 0%"></div>
+            </div>
+        `;
+        container.appendChild(skillEl);
     });
 
-    // Add event listeners to project buttons
-    document.querySelectorAll('.view-project-button').forEach(button => {
-        button.addEventListener('click', (event) => {
-            const link = event.target.getAttribute('data-link');
-            window.open(link, '_blank');
+    // Animate progress bars on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const bars = entry.target.querySelectorAll('.progress-bar');
+                bars.forEach(bar => {
+                    const level = bar.dataset.level;
+                    setTimeout(() => {
+                        bar.style.width = `${level}%`;
+                    }, 200);
+                });
+            }
         });
     });
+
+    document.querySelectorAll('.skill-item').forEach(item => observer.observe(item));
 };
 
-// Form Submission (Simulating Email)
-const setupContactForm = () => {
-    const contactForm = document.getElementById('contact-form');
-    if (!contactForm) {
-        console.error('Contact form not found');
-        return;
-    }
-    contactForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        alert("Your message has been sent! (Simulated)");
+// Render Testimonials with proper styling
+const renderTestimonials = () => {
+    const container = document.querySelector('#testimonials .testimonials');
+    if (!container) return;
+
+    testimonialData.forEach(item => {
+        const testimonialEl = createElement('div', 'testimonial-card');
+        testimonialEl.innerHTML = `
+            <p class="testimonial-text">"${item.text}"</p>
+            <div class="testimonial-author">
+                <strong>${item.name}</strong>
+                <span>${item.role}</span>
+            </div>
+        `;
+        container.appendChild(testimonialEl);
     });
 };
 
-// Dark Mode Toggle
-const setupThemeToggle = () => {
-    const themeToggleButton = document.getElementById("theme-toggle");
-    if (!themeToggleButton) {
-        console.error('Theme toggle button not found');
-        return;
-    }
-    themeToggleButton.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
+// Theme handling
+const handleTheme = () => {
+    const theme = localStorage.getItem('theme') === 'dark' ? 'dark' : 'light';
+    document.body.classList.toggle('dark-mode', theme === 'dark');
+    getElement('theme-toggle')?.addEventListener('click', () => {
+        const isDark = document.body.classList.toggle('dark-mode');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
-
-    // Apply dark mode if previously enabled
-    if (localStorage.getItem('dark-mode') === 'enabled') {
-        document.body.classList.add('dark-mode');
-    }
 };
 
-// Save dark mode preference
-document.body.addEventListener('classlistchange', () => {
-    if (document.body.classList.contains('dark-mode')) {
-        localStorage.setItem('dark-mode', 'enabled');
-    } else {
-        localStorage.setItem('dark-mode', 'disabled');
-    }
-});
-
-// Initialize dynamic content
-window.onload = () => {
+// Initialize
+window.addEventListener('load', () => {
+    handleTheme();
     renderExperience();
     renderProjects();
-    setupContactForm();
-    setupThemeToggle();
+    renderSkills();
+    renderTestimonials();
+});
+
+// Add scroll animations
+const animateSections = () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    });
+
+    document.querySelectorAll('section').forEach(section => observer.observe(section));
 };
+
+animateSections();

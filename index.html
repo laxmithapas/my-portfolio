@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Laxmi Thapa - Web Developer, Designer & Blogger Portfolio">
+    <meta name="keywords" content="web developer, designer, blogger, portfolio">
     <title>Portfolio | Laxmi Thapa</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preload" href="lakshmi.jpg" as="image">
 </head>
 <body>
 
     <!-- Navigation Bar -->
-    <nav>
+    <nav aria-label="Main navigation">
         <ul>
             <li><a href="#about">About Me</a></li>
             <li><a href="#experience">Experience</a></li>
@@ -21,7 +24,7 @@
     <!-- Header Section with Profile and Social Links -->
     <header>
         <div class="profile-container">
-            <img src="lakshmi.jpg" alt="Laxmi Thapa" class="profile-photo">
+            <img src="lakshmi.jpg" alt="Laxmi Thapa" class="profile-photo" loading="lazy">
             <h1>Laxmi Thapa</h1>
             <p class="tagline">Web Developer | Designer | Blogger</p> <!-- Add class "tagline" -->
         </div>
@@ -42,6 +45,14 @@
         <p>Hello! I'm Laxmi, undergraduate student at ADTU with a passion for both cybersecurity and artificial intelligence. I love creating clean, minimal, and functional websites.</p>
     </section>
 
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-container">
+            <!-- Skills will be injected by JavaScript -->
+        </div>
+    </section>
+
     <!-- Experience Section -->
     <section id="experience">
         <h2>Experience</h2>
@@ -50,11 +61,19 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Enhanced Projects Section -->
     <section id="projects">
         <h2>Projects</h2>
-        <div id="project-container">
-            <!-- Dynamic Project Items Will Be Injected Here -->
+        <div class="project-grid">
+            <!-- Projects will be injected by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <h2>What Others Say</h2>
+        <div class="testimonials">
+            <!-- Testimonials will be injected by JavaScript -->
         </div>
     </section>
 
