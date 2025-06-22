@@ -174,20 +174,24 @@ nav ul li a:hover {
     position: fixed;
     top: 18px;
     left: 18px;
-    z-index: 1100;
-    background: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    width: 44px;
-    height: 44px;
+    z-index: 2000; /* Increased for visibility */
+    background: #fff; /* High contrast background */
+    color: #007bff;   /* High contrast icon */
+    border: 2px solid #007bff; /* High contrast border */
+    border-radius: 8px;
+    width: 48px;
+    height: 48px;
     font-size: 2rem;
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-    transition: background 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    transition: background 0.2s, color 0.2s, border 0.2s;
 }
-#hamburger-menu:hover {
-    background: #0056b3;
+#hamburger-menu:hover,
+#hamburger-menu:focus {
+    background: #007bff;
+    color: #fff;
+    border-color: #0056b3;
+    outline: none;
 }
 
 /* Overlay for mobile nav */
