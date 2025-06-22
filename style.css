@@ -534,5 +534,19 @@ section {
         width: 120px;
         height: 120px;
     }
+
+    nav ul {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        justify-content: flex-start;
+        gap: 0;
+        padding: 0 10px;
+    }
+
+    nav ul li {
+        flex: 0 0 auto;
+        margin: 0 10px;
+    }
 }
-   
+
