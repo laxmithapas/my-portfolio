@@ -53,6 +53,7 @@ const renderExperience = () => {
     container.appendChild(fragment);
 };
 
+// Render Projects (add <img> if you have images)
 const renderProjects = () => {
     const container = getElement('projects').querySelector('.project-grid');
     if (!container) return;
@@ -60,7 +61,10 @@ const renderProjects = () => {
     const fragment = document.createDocumentFragment();
     projectData.forEach(item => {
         const el = createElement('div', 'project-item');
+        // If you have an image URL, add <img src="...">
+        // Example: <img src="${item.image}" alt="${item.name}" />
         el.innerHTML = `
+            <!-- <img src="${item.image}" alt="${item.name}" /> Uncomment and provide image if available -->
             <h3>${item.name}</h3>
             <p>${item.description}</p>
             <button class="view-project-button" data-link="${item.link}">🔗 View Project</button>
@@ -111,7 +115,7 @@ const renderSkills = () => {
     document.querySelectorAll('.skill-item').forEach(item => observer.observe(item));
 };
 
-// Render Testimonials with proper styling
+// Render Testimonials with proper styling and fade-in animation
 const renderTestimonials = () => {
     const container = document.querySelector('#testimonials .testimonials');
     if (!container) return;
@@ -127,6 +131,17 @@ const renderTestimonials = () => {
         `;
         container.appendChild(testimonialEl);
     });
+
+    // Fade-in animation on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    container.querySelectorAll('.testimonial-card').forEach(card => observer.observe(card));
 };
 
 // Theme handling

@@ -422,6 +422,37 @@ section {
     transform: translateY(-5px);
 }
 
+/* Project Button Hover Effects */
+.view-project-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 10px;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+.view-project-button:hover,
+.view-project-button:focus {
+    background-color: #0056b3;
+    transform: scale(1.07);
+}
+
+/* Project Image Zoom on Hover */
+.project-item img {
+    width: 100%;
+    border-radius: 8px;
+    transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+    display: block;
+}
+.project-item:hover img {
+    transform: scale(1.08);
+}
+
 /* Testimonials enhancements */
 .testimonials {
     display: flex;
@@ -440,6 +471,14 @@ section {
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     border: 1px solid var(--card-border);
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+}
+
+.testimonial-card.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .testimonial-text {
@@ -545,10 +584,13 @@ section {
     display: inline-block;
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
-.view-project-button:hover {
+.view-project-button:hover,
+.view-project-button:focus {
     background-color: #0056b3;
+    transform: scale(1.07);
 }
 
 /* Resume Button */
