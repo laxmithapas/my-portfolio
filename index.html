@@ -10,9 +10,15 @@
     <link rel="preload" href="lakshmi.jpg" as="image">
 </head>
 <body>
+    <!-- Hamburger Menu Button -->
+    <button id="hamburger-menu" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false">
+        &#9776;
+    </button>
+    <!-- Overlay for mobile nav -->
+    <div id="nav-overlay"></div>
 
     <!-- Navigation Bar -->
-    <nav aria-label="Main navigation">
+    <nav id="main-nav" aria-label="Main navigation">
         <ul>
             <li><a href="#about">About Me</a></li>
             <li><a href="#experience">Experience</a></li>

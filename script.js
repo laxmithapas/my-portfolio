@@ -163,3 +163,27 @@ const animateSections = () => {
 };
 
 animateSections();
+
+// Hamburger menu logic
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.getElementById('hamburger-menu');
+    const nav = document.getElementById('main-nav');
+    const overlay = document.getElementById('nav-overlay');
+    if (hamburger && nav && overlay) {
+        const closeMenu = () => {
+            nav.classList.remove('open');
+            overlay.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+        };
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('open');
+            overlay.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', nav.classList.contains('open') ? 'true' : 'false');
+        });
+        overlay.addEventListener('click', closeMenu);
+        // Optional: close menu on nav link click (mobile)
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+    }
+});

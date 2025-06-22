@@ -168,6 +168,38 @@ nav ul li a:hover {
     color: #555;
 }
 
+/* Hamburger menu styles */
+#hamburger-menu {
+    display: none;
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    z-index: 1100;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    width: 44px;
+    height: 44px;
+    font-size: 2rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    transition: background 0.2s;
+}
+#hamburger-menu:hover {
+    background: #0056b3;
+}
+
+/* Overlay for mobile nav */
+#nav-overlay {
+    display: none;
+    position: fixed;
+    z-index: 1099;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.3);
+    transition: opacity 0.2s;
+}
+
 /* Main Content Sections */
 section {
     padding: 40px;
@@ -563,6 +595,79 @@ section {
     nav ul li a {
         font-size: 16px;
         padding: 8px 6px;
+    }
+
+    /* Mobile nav styles */
+    #hamburger-menu {
+        display: block;
+    }
+    nav#main-nav {
+        position: fixed;
+        top: 0;
+        left: -260px;
+        width: 220px;
+        height: 100vh;
+        background: #222;
+        box-shadow: 2px 0 12px rgba(0,0,0,0.18);
+        z-index: 1200;
+        padding-top: 70px;
+        transition: left 0.3s cubic-bezier(.4,0,.2,1);
+        border-radius: 0 12px 12px 0;
+        display: block;
+    }
+    nav#main-nav.open {
+        left: 0;
+    }
+    #nav-overlay.active {
+        display: block;
+    }
+    nav#main-nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 0 0 20px;
+        margin: 0;
+        gap: 0;
+        width: 100%;
+        overflow-x: visible;
+    }
+    nav#main-nav ul li {
+        margin: 0 0 18px 0;
+        width: 100%;
+    }
+    nav#main-nav ul li a {
+        font-size: 18px;
+        padding: 10px 0;
+        display: block;
+        width: 100%;
+        color: #fff;
+    }
+    nav#main-nav ul li a:hover {
+        color: #007bff;
+        background: rgba(0,123,255,0.08);
+    }
+    /* Hide fixed nav bar at top for mobile */
+    nav#main-nav {
+        box-shadow: 2px 0 12px rgba(0,0,0,0.18);
+    }
+    /* Hide nav bar horizontal styles for mobile */
+    nav#main-nav ul {
+        justify-content: flex-start;
+    }
+    /* Hide nav bar horizontal scroll for mobile */
+    nav#main-nav ul::-webkit-scrollbar {
+        display: none;
+    }
+    /* Hide nav bar horizontal scroll for mobile */
+    nav#main-nav ul {
+        scrollbar-width: none;
+    }
+    /* Hide nav bar horizontal scroll for mobile */
+    nav#main-nav ul li {
+        white-space: normal;
+    }
+    /* Hide nav bar horizontal scroll for mobile */
+    nav#main-nav ul li a {
+        white-space: normal;
     }
 }
 
