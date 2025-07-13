@@ -1,0 +1,1 @@
+#This is basically a simple portfolio webpage where I intended to showcase my skills and projects. I build this using technologies like HTML, CSS and JavaScript and React.
